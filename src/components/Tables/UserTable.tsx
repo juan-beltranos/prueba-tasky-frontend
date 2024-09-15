@@ -10,7 +10,7 @@ interface UserTableProps {
 const UserTable: React.FC<UserTableProps> = ({ users, openSmsModal }) => {
     return (
         <div className="overflow-x-auto">
-            <table className="min-w-full bg-white dark:bg-boxdark">
+            <table className="min-w-full bg-white dark:bg-boxdark border-collapse">
                 <thead>
                     <tr>
                         <th className="text-left py-2 px-4 border-b">Nombre</th>
@@ -52,7 +52,6 @@ const UserTable: React.FC<UserTableProps> = ({ users, openSmsModal }) => {
                 </tbody>
             </table>
         </div>
-
     );
 };
 
