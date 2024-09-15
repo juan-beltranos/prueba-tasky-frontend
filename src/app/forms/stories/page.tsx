@@ -7,7 +7,6 @@ import api from '@/utils/api';
 import { User, CreateUserForm } from "@/types/types";
 import { fetchUsers } from "@/hooks/useUsers";
 
-// Definir el estado inicial del formulario
 const initialFormState: CreateUserForm = {
   name: "",
   phone: "",
@@ -55,8 +54,8 @@ const FormLayout: React.FC = () => {
       return alert("El mensaje es obligatorio.");
     }
     try {
-      await api.post("/sms/send", { phone, message: smsMessage });
-      alert("SMS enviado exitosamente");
+      const resp = await api.post("/sms/send", { phone, message: smsMessage });
+      alert(resp.data.message);
     } catch (error) {
       console.error("Error sending SMS:", error);
       alert("Error al enviar el SMS");
