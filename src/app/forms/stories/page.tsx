@@ -79,9 +79,9 @@ const FormLayout: React.FC = () => {
     }
 
     const cleanedPhone = formState.phone.replace(/^\+57/, '').trim();
-    const phoneRegex = /^[0-9]+$/;
+    const phoneRegex = /^[0-9]{10}$/;
     if (!phoneRegex.test(cleanedPhone)) {
-      alert("El teléfono debe contener solo números.");
+      alert("El teléfono debe contener exactamente 10 números.");
       return;
     }
 
