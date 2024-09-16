@@ -79,6 +79,11 @@ const FormLayout: React.FC = () => {
     }
 
     const cleanedPhone = formState.phone.replace(/^\+57/, '').trim();
+    const phoneRegex = /^[0-9]+$/;
+    if (!phoneRegex.test(cleanedPhone)) {
+      alert("El teléfono debe contener solo números.");
+      return;
+    }
 
     try {
       const formData = new FormData();
@@ -96,7 +101,7 @@ const FormLayout: React.FC = () => {
       });
 
       alert("Usuario creado exitosamente");
-      setFormState(initialFormState)
+      setFormState(initialFormState);
       closeCreateUserModal();
 
       const response = await api.get<User[]>("/users");
@@ -106,6 +111,7 @@ const FormLayout: React.FC = () => {
       alert("Error al crear el usuario");
     }
   };
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
